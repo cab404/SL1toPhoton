@@ -101,7 +101,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         base, ext = os.path.splitext(filepath)
         self.lineEdit_outfile.setText(base + ".photon")
         sl1 = SL1Reader(filepath)
-        self.exposureSpinBox.setValue(float(sl1.config['expTime']))
+        self.exposureDoubleSpinBox.setValue(float(sl1.config['expTime']))
         self.exposureBottomLayersSpinBox.setValue(float(sl1.config['expTimeFirst']))
         self.layerHeightDoubleSpinBox.setValue(float(sl1.config['layerHeight']))
         self.bottomLayersSpinBox.setValue(int(sl1.config['numFade']))
@@ -129,10 +129,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         sl1 = SL1Reader(infile)
         photon = pyphotonfile.Photon()
-        photon.exposure_time = self.exposureSpinBox.value()
+        photon.exposure_time = self.exposureDoubleSpinBox.value()
         photon.exposure_time_bottom = self.exposureBottomLayersSpinBox.value()
         photon.layer_height = self.layerHeightDoubleSpinBox.value()
         photon.bottom_layers = self.bottomLayersSpinBox.value()
+        photon.bottom_layer_count = self.bottomLayersSpinBox.value()
+        photon.lifting_speed = self.liftSpeeedSpinBox.value()
+        photon.bottom_lift_speed = self.liftSpeeedSpinBox.value()
+        photon.version = 2;
+        photon.print_properties_length = 60
+        photon.retract_speed = self.retractSpeeedSpinBox.value()
+        photon.print_time = int(float(sl1.config['printTime']))
+        photon.anti_aliasing_level = 0
+        photon.layer_levels = 1
+        photon.light_pwm = 255
+        photon.light_pwm_bottom = 255
+        photon.bottom_lift_distance = 9060
+        photon.lifting_distance = 5
+        photon.volume_ml = float(sl1.config['usedMaterial'])
+        photon.weight_g = float(sl1.config['usedMaterial'])
+        photon.cost_dollars = 1
+        photon.bottom_light_off_delay = 0.0
+        photon.light_off_delay = 0.0
+        photon.p1 = 0.0
+        photon.p2 = 0.0
+        photon.p3 = 0.0
+        photon.p4 = 0.0
 
         self.progressBar.setMaximum(sl1.n_layers)
         self.progressBar.setTextVisible(True)
@@ -143,6 +165,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 photon.append_layer(filepath)
                 self.progressBar.setValue(i+1)
                 QApplication.processEvents()
+                if(self.stopConvert)
+                    break
         photon.write(outfile)
         ret = QMessageBox.information(self, "SL1 to Photon Converter", "Done!", QMessageBox.Ok)
 
