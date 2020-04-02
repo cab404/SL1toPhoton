@@ -165,8 +165,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 photon.append_layer(filepath)
                 self.progressBar.setValue(i+1)
                 QApplication.processEvents()
-                if(self.stopConvert)
-                    break
         photon.write(outfile)
         ret = QMessageBox.information(self, "SL1 to Photon Converter", "Done!", QMessageBox.Ok)
 
