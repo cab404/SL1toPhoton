@@ -1,146 +1,203 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\heiko\code\SL1toPhoton\gui\mainwindow.ui',
-# licensing of 'C:\Users\heiko\code\SL1toPhoton\gui\mainwindow.ui' applies.
-#
-# Created: Sat May  4 15:46:18 2019
-#      by: pyside2-uic  running on PySide2 5.12.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'mainwindow.ui'
+##
+## Created by: Qt User Interface Compiler version 5.14.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
+    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QLocale)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
+    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
+    QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(566, 291)
-        MainWindow.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.Germany))
-        self.centralWidget = QtWidgets.QWidget(MainWindow)
-        self.centralWidget.setObjectName("centralWidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralWidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.groupBox = QtWidgets.QGroupBox(self.centralWidget)
-        self.groupBox.setObjectName("groupBox")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.groupBox)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.label_2 = QtWidgets.QLabel(self.groupBox)
-        self.label_2.setObjectName("label_2")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(566, 343)
+        MainWindow.setLocale(QLocale(QLocale.English, QLocale.Germany))
+        self.centralWidget = QWidget(MainWindow)
+        self.centralWidget.setObjectName(u"centralWidget")
+        self.verticalLayout = QVBoxLayout(self.centralWidget)
+        self.verticalLayout.setSpacing(6)
+        self.verticalLayout.setContentsMargins(11, 11, 11, 11)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.groupBox = QGroupBox(self.centralWidget)
+        self.groupBox.setObjectName(u"groupBox")
+        self.gridLayout_2 = QGridLayout(self.groupBox)
+        self.gridLayout_2.setSpacing(6)
+        self.gridLayout_2.setContentsMargins(11, 11, 11, 11)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.label_2 = QLabel(self.groupBox)
+        self.label_2.setObjectName(u"label_2")
+
         self.gridLayout_2.addWidget(self.label_2, 1, 0, 1, 1)
-        self.label = QtWidgets.QLabel(self.groupBox)
-        self.label.setObjectName("label")
+
+        self.label = QLabel(self.groupBox)
+        self.label.setObjectName(u"label")
+
         self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
-        self.lineEdit_outfile = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_outfile.setObjectName("lineEdit_outfile")
+
+        self.lineEdit_outfile = QLineEdit(self.groupBox)
+        self.lineEdit_outfile.setObjectName(u"lineEdit_outfile")
+
         self.gridLayout_2.addWidget(self.lineEdit_outfile, 1, 1, 1, 1)
-        self.lineEdit_infile = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_infile.setObjectName("lineEdit_infile")
+
+        self.lineEdit_infile = QLineEdit(self.groupBox)
+        self.lineEdit_infile.setObjectName(u"lineEdit_infile")
+
         self.gridLayout_2.addWidget(self.lineEdit_infile, 0, 1, 1, 1)
-        self.pushButton_open_out = QtWidgets.QPushButton(self.groupBox)
-        self.pushButton_open_out.setObjectName("pushButton_open_out")
+
+        self.pushButton_open_out = QPushButton(self.groupBox)
+        self.pushButton_open_out.setObjectName(u"pushButton_open_out")
+
         self.gridLayout_2.addWidget(self.pushButton_open_out, 1, 2, 1, 1)
-        self.pushButton_open_in = QtWidgets.QPushButton(self.groupBox)
-        self.pushButton_open_in.setObjectName("pushButton_open_in")
+
+        self.pushButton_open_in = QPushButton(self.groupBox)
+        self.pushButton_open_in.setObjectName(u"pushButton_open_in")
+
         self.gridLayout_2.addWidget(self.pushButton_open_in, 0, 2, 1, 1)
+
+
         self.verticalLayout.addWidget(self.groupBox)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralWidget)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.formLayout = QtWidgets.QFormLayout(self.groupBox_2)
-        self.formLayout.setObjectName("formLayout")
-        self.exposureLabel = QtWidgets.QLabel(self.groupBox_2)
-        self.exposureLabel.setObjectName("exposureLabel")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.exposureLabel)
-        self.exposureDoubleSpinBox = QtWidgets.QDoubleSpinBox(self.groupBox_2)
-        self.exposureDoubleSpinBox.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        self.exposureDoubleSpinBox.setMaximum(999)
-        self.exposureDoubleSpinBox.setDecimals(1)
-        self.exposureDoubleSpinBox.setObjectName("exposureDoubleSpinBox")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.exposureDoubleSpinBox)
-        self.exposureBottomLayersLabel = QtWidgets.QLabel(self.groupBox_2)
-        self.exposureBottomLayersLabel.setObjectName("exposureBottomLayersLabel")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.exposureBottomLayersLabel)
-        self.exposureBottomLayersSpinBox = QtWidgets.QSpinBox(self.groupBox_2)
+
+        self.groupBox_2 = QGroupBox(self.centralWidget)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.formLayout = QFormLayout(self.groupBox_2)
+        self.formLayout.setSpacing(6)
+        self.formLayout.setContentsMargins(11, 11, 11, 11)
+        self.formLayout.setObjectName(u"formLayout")
+        self.exposureLabel = QLabel(self.groupBox_2)
+        self.exposureLabel.setObjectName(u"exposureLabel")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.exposureLabel)
+
+        self.exposureBottomLayersLabel = QLabel(self.groupBox_2)
+        self.exposureBottomLayersLabel.setObjectName(u"exposureBottomLayersLabel")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.exposureBottomLayersLabel)
+
+        self.exposureBottomLayersSpinBox = QSpinBox(self.groupBox_2)
+        self.exposureBottomLayersSpinBox.setObjectName(u"exposureBottomLayersSpinBox")
         self.exposureBottomLayersSpinBox.setMaximum(999)
-        self.exposureBottomLayersSpinBox.setObjectName("exposureBottomLayersSpinBox")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.exposureBottomLayersSpinBox)
-        self.bottomLayersLabel = QtWidgets.QLabel(self.groupBox_2)
-        self.bottomLayersLabel.setObjectName("bottomLayersLabel")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.bottomLayersLabel)
-        self.bottomLayersSpinBox = QtWidgets.QSpinBox(self.groupBox_2)
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.exposureBottomLayersSpinBox)
+
+        self.bottomLayersLabel = QLabel(self.groupBox_2)
+        self.bottomLayersLabel.setObjectName(u"bottomLayersLabel")
+
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.bottomLayersLabel)
+
+        self.bottomLayersSpinBox = QSpinBox(self.groupBox_2)
+        self.bottomLayersSpinBox.setObjectName(u"bottomLayersSpinBox")
         self.bottomLayersSpinBox.setMaximum(999)
-        self.bottomLayersSpinBox.setObjectName("bottomLayersSpinBox")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.bottomLayersSpinBox)
-        self.layerHeightLabel = QtWidgets.QLabel(self.groupBox_2)
-        self.layerHeightLabel.setObjectName("layerHeightLabel")
 
-        self.liftSpeedLabel = QtWidgets.QLabel(self.groupBox_2)
-        self.liftSpeedLabel.setObjectName("liftSpeedLabel")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.liftSpeedLabel)
-        self.liftSpeeedSpinBox = QtWidgets.QSpinBox(self.groupBox_2)
-        self.liftSpeeedSpinBox.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        self.liftSpeeedSpinBox.setPrefix("")
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.bottomLayersSpinBox)
+
+        self.exposureDoubleSpinBox = QDoubleSpinBox(self.groupBox_2)
+        self.exposureDoubleSpinBox.setObjectName(u"exposureDoubleSpinBox")
+        self.exposureDoubleSpinBox.setLocale(QLocale(QLocale.English, QLocale.UnitedStatesVirginIslands))
+        self.exposureDoubleSpinBox.setDecimals(1)
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.exposureDoubleSpinBox)
+
+        self.liftSpeedLabel = QLabel(self.groupBox_2)
+        self.liftSpeedLabel.setObjectName(u"liftSpeedLabel")
+
+        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.liftSpeedLabel)
+
+        self.liftSpeeedSpinBox = QSpinBox(self.groupBox_2)
+        self.liftSpeeedSpinBox.setObjectName(u"liftSpeeedSpinBox")
+        self.liftSpeeedSpinBox.setMinimum(1)
+        self.liftSpeeedSpinBox.setMaximum(999)
         self.liftSpeeedSpinBox.setSingleStep(5)
-        self.liftSpeeedSpinBox.setMaximum(1000)
         self.liftSpeeedSpinBox.setValue(65)
-        self.liftSpeeedSpinBox.setObjectName("liftSpeeedSpinBox")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.liftSpeeedSpinBox)
 
-        self.retractSpeedLabel = QtWidgets.QLabel(self.groupBox_2)
-        self.retractSpeedLabel.setObjectName("retractSpeedLabel")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.retractSpeedLabel)
-        self.retractSpeeedSpinBox = QtWidgets.QSpinBox(self.groupBox_2)
-        self.retractSpeeedSpinBox.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        self.retractSpeeedSpinBox.setPrefix("")
+        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.liftSpeeedSpinBox)
+
+        self.retractSpeedLabel = QLabel(self.groupBox_2)
+        self.retractSpeedLabel.setObjectName(u"retractSpeedLabel")
+
+        self.formLayout.setWidget(6, QFormLayout.LabelRole, self.retractSpeedLabel)
+
+        self.retractSpeeedSpinBox = QSpinBox(self.groupBox_2)
+        self.retractSpeeedSpinBox.setObjectName(u"retractSpeeedSpinBox")
+        self.retractSpeeedSpinBox.setMinimum(1)
+        self.retractSpeeedSpinBox.setMaximum(999)
         self.retractSpeeedSpinBox.setSingleStep(10)
-        self.retractSpeeedSpinBox.setMaximum(1000)
         self.retractSpeeedSpinBox.setValue(150)
-        self.retractSpeeedSpinBox.setObjectName("retractSpeeedSpinBox")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.retractSpeeedSpinBox)
 
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.layerHeightLabel)
-        self.layerHeightDoubleSpinBox = QtWidgets.QDoubleSpinBox(self.groupBox_2)
-        self.layerHeightDoubleSpinBox.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
+        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.retractSpeeedSpinBox)
+
+        self.layerHeightDoubleSpinBox = QDoubleSpinBox(self.groupBox_2)
+        self.layerHeightDoubleSpinBox.setObjectName(u"layerHeightDoubleSpinBox")
+        self.layerHeightDoubleSpinBox.setEnabled(False)
+        self.layerHeightDoubleSpinBox.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         self.layerHeightDoubleSpinBox.setReadOnly(True)
-        self.layerHeightDoubleSpinBox.setPrefix("")
+        self.layerHeightDoubleSpinBox.setPrefix(u"")
         self.layerHeightDoubleSpinBox.setDecimals(3)
-        self.layerHeightDoubleSpinBox.setSingleStep(0.05)
-        self.layerHeightDoubleSpinBox.setObjectName("layerHeightDoubleSpinBox")
-        self.layerHeightDoubleSpinBox.setDisabled(True)
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.layerHeightDoubleSpinBox)
+        self.layerHeightDoubleSpinBox.setSingleStep(0.050000000000000)
+
+        self.formLayout.setWidget(7, QFormLayout.FieldRole, self.layerHeightDoubleSpinBox)
+
+        self.layerHeightLabel = QLabel(self.groupBox_2)
+        self.layerHeightLabel.setObjectName(u"layerHeightLabel")
+
+        self.formLayout.setWidget(7, QFormLayout.LabelRole, self.layerHeightLabel)
+
+
         self.verticalLayout.addWidget(self.groupBox_2)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton_convert = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_convert.setObjectName("pushButton_convert")
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setSpacing(6)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.pushButton_convert = QPushButton(self.centralWidget)
+        self.pushButton_convert.setObjectName(u"pushButton_convert")
+
         self.horizontalLayout.addWidget(self.pushButton_convert)
-        self.progressBar = QtWidgets.QProgressBar(self.centralWidget)
-        self.progressBar.setProperty("value", 0)
+
+        self.progressBar = QProgressBar(self.centralWidget)
+        self.progressBar.setObjectName(u"progressBar")
+        self.progressBar.setValue(0)
         self.progressBar.setTextVisible(True)
-        self.progressBar.setObjectName("progressBar")
+
         self.horizontalLayout.addWidget(self.progressBar)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
         MainWindow.setCentralWidget(self.centralWidget)
-        self.statusBar = QtWidgets.QStatusBar(MainWindow)
-        self.statusBar.setObjectName("statusBar")
+        self.statusBar = QStatusBar(MainWindow)
+        self.statusBar.setObjectName(u"statusBar")
         MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "SL1 to Photon Converter", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "File Selection", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Output File", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Input File", None, -1))
-        self.lineEdit_outfile.setPlaceholderText(QtWidgets.QApplication.translate("MainWindow", "Path to the Photon-File", None, -1))
-        self.lineEdit_infile.setPlaceholderText(QtWidgets.QApplication.translate("MainWindow", "Path to the SL1-File", None, -1))
-        self.pushButton_open_out.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
-        self.pushButton_open_in.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "Parameters", None, -1))
-        self.exposureLabel.setText(QtWidgets.QApplication.translate("MainWindow", "Exposure", None, -1))
-        self.exposureBottomLayersLabel.setText(QtWidgets.QApplication.translate("MainWindow", "Exposure (Bottom Layers)", None, -1))
-        self.bottomLayersLabel.setText(QtWidgets.QApplication.translate("MainWindow", "Bottom Layers", None, -1))
-        self.layerHeightLabel.setText(QtWidgets.QApplication.translate("MainWindow", "Layer Height", None, -1))
-        self.retractSpeedLabel.setText(QtWidgets.QApplication.translate("MainWindow", "Retract Speed", None, -1))
-        self.liftSpeedLabel.setText(QtWidgets.QApplication.translate("MainWindow", "Lifting Speed", None, -1))
-        self.pushButton_convert.setText(QtWidgets.QApplication.translate("MainWindow", "Convert", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"SL1 to Photon Converter", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"File Selection", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Output File", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Input File", None))
+        self.lineEdit_outfile.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Path to the Photon-File", None))
+        self.lineEdit_infile.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Path to the SL1-File", None))
+        self.pushButton_open_out.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+        self.pushButton_open_in.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Parameters", None))
+        self.exposureLabel.setText(QCoreApplication.translate("MainWindow", u"Exposure", None))
+        self.exposureBottomLayersLabel.setText(QCoreApplication.translate("MainWindow", u"Exposure (Bottom Layers)", None))
+        self.bottomLayersLabel.setText(QCoreApplication.translate("MainWindow", u"Bottom Layers", None))
+        self.liftSpeedLabel.setText(QCoreApplication.translate("MainWindow", u"Lifting Speed", None))
+        self.retractSpeedLabel.setText(QCoreApplication.translate("MainWindow", u"Retract Speed", None))
+        self.layerHeightLabel.setText(QCoreApplication.translate("MainWindow", u"Layer Height", None))
+        self.pushButton_convert.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
+    # retranslateUi
 
