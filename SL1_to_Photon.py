@@ -5,6 +5,7 @@ import zipfile
 import tempfile
 import argparse
 import pyphotonfile
+import multiprocessing
 from PIL import Image
 # from IPython import embed
 
@@ -69,27 +70,47 @@ if __name__ == '__main__':
     photon.layer_height = float(sl1.config['layerHeight'])
     photon.bottom_layers = int(sl1.config['numFade'])
 
-    if args.verbose:
-        print('=== PARAMETERS ===')
-        print('Exposure Time: {}'.format(photon.exposure_time))
-        print('Bottom Exposure Time: {}'.format(photon.exposure_time_bottom))
-        print('Layer Height: {}'.format(photon.layer_height))
-        print('Bottom Layers: {}'.format(photon.bottom_layers))
-        print('Layers: {}'.format(sl1.n_layers))
-        print('=== CONVERSION ===')
+    def log(*a, **b):
+        if args.verbose:
+            print(*a, **b)
+
+    log('=== PARAMETERS ===')
+    log('Exposure Time: {}'.format(photon.exposure_time))
+    log('Bottom Exposure Time: {}'.format(photon.exposure_time_bottom))
+    log('Layer Height: {}'.format(photon.layer_height))
+    log('Bottom Layers: {}'.format(photon.bottom_layers))
+    log('Layers: {}'.format(sl1.n_layers))
+    log('=== CONVERSION ===')
+
     with tempfile.TemporaryDirectory() as tmpdirname:
-        if args.verbose:
-            print('extracting layers... ', end='')
+
+        log('extracting layers... ', end='')
+
         sl1.extract_images(tmpdirname)
-        if args.verbose:
-            print('DONE')
-        for i, filepath in enumerate(sorted(glob.glob(os.path.join(tmpdirname, '*.png')))):
-            if args.verbose:
-                print('converting layer {} / {} '.format(i+1, sl1.n_layers), end='')
+
+        log('DONE')
+
+        layers = sorted(glob.glob(os.path.join(tmpdirname, '*.png')))
+
+        counter = None
+
+        def convert_layer(filepath):
+            global counter
+
+            with counter.get_lock():
+                counter.value += 1
+                log(f"converting layer {counter.value} / {sl1.n_layers}", end='\r')
+
             Image.open(filepath).rotate(180).save(filepath)
-            photon.append_layer(filepath)
-            if args.verbose:
-                print('DONE')
+            return photon.create_layer(filepath)
+
+        counter = multiprocessing.Value('i', 0)
+        pool = multiprocessing.Pool(initargs=(counter, ))
+
+        photon.layers = pool.map(convert_layer, layers)
+
+        log()
+
 
     photon.write(photon_path)
     print('Output file written to: {}'.format(photon_path))
