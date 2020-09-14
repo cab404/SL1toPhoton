@@ -127,6 +127,7 @@ if __name__ == '__main__':
     log('Layer Height: {}'.format(photon.layer_height))
     log('Bottom Layers: {}'.format(photon.bottom_layers))
     log('Layers: {}'.format(sl1.n_layers))
+    log('Used material: {} g.'.format(sl1.config['usedMaterial']))
     log('Lifting speed: {}'.format(photon.lifting_speed))
     log('Retract speed: {}'.format(photon.retract_speed))
     log('=== CONVERSION ===')
