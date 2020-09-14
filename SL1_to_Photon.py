@@ -32,6 +32,14 @@ class SL1Reader:
                 key, value = line.strip().split('=')
                 self.config[key.strip()] = value.strip()
 
+    def read_thumbnail(self, size="800x480") -> Image:
+        try:
+            tb = self.zf.read(f'thumbnail/thumbnail{size}.png')
+        except KeyError:
+            print(f'ERROR: Did not find thumbnail of size {size} in zip file. Is that really an SL1 file?')
+        else:
+            return Image.open(io.BytesIO(tb))
+
     def extract_images(self, dirpath):
         try:
             os.makedirs(dirpath)
