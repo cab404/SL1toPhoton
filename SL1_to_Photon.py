@@ -78,7 +78,12 @@ if __name__ == '__main__':
     sl1 = SL1Reader(args.sl1_file)
     photon = pyphotonfile.Photon()
 
-    # photon.version = 2;
+    photon.version = 2;
+
+    # Printer settings
+    photon.bed_x = 68.04000091552734
+    photon.bed_y = 120.95999908447266
+    photon.bed_z = 155.0
 
     # Slicing settings
     photon.anti_aliasing_level = 0
@@ -88,34 +93,37 @@ if __name__ == '__main__':
     photon.bottom_layer_count = int(sl1.config['numFade'])
 
     # Lift settings
-    photon.retract_speed = int(args.retractspeed)
     photon.lifting_speed = int(args.liftspeed)
+    photon.lifting_distance = 5.0
+
     photon.bottom_lift_speed = int(args.liftspeed)
-    photon.lifting_distance = 5
+    photon.bottom_lift_distance = 6.0
+
+    photon.retract_speed = int(args.retractspeed)
 
     # Curing settings
     photon.exposure_time = float(sl1.config['expTime'])
     photon.exposure_time_bottom = float(sl1.config['expTimeFirst'])
     photon.bottom_light_off_delay = 0.0
     photon.light_off_delay = 0.0
+    photon.off_time = 1.0
     photon.light_pwm = 255
     photon.light_pwm_bottom = 255
 
     # Meta
     photon.volume_ml = float(sl1.config['usedMaterial'])
     photon.weight_g = float(sl1.config['usedMaterial'])
-    photon.cost_dollars = 1
+    photon.cost_dollars = 1.0
     photon.print_properties_length = 60
     photon.print_time = int(float(sl1.config['printTime']))
     photon.set_preview_highres(sl1.read_thumbnail(size="800x480"))
     photon.set_preview_lowres(sl1.read_thumbnail(size="400x400"))
 
     # Strange settings
-    photon.bottom_lift_distance = 9060
-    photon.p1 = 0.0
-    photon.p2 = 0.0
+    photon.p1 = 1.875
+    photon.p2 = 9.453131998900351e+23
     photon.p3 = 0.0
-    photon.p4 = 0.0
+    photon.p4 = 8.407790785948902e-45
 
     def log(*a, **b):
         if args.verbose:
@@ -164,4 +172,3 @@ if __name__ == '__main__':
 
     photon.write(photon_path)
     print('Output file written to: {}'.format(photon_path))
-
