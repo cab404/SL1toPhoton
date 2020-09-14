@@ -109,6 +109,18 @@ if __name__ == '__main__':
     photon.layer_height = float(sl1.config['layerHeight'])
     photon.bottom_layers = int(sl1.config['numFade'])
     photon.bottom_layer_count = int(sl1.config['numFade'])
+
+    preview_large = sl1.read_thumbnail(size="800x480")
+    photon.preview_highres_data = encode_image_preview(preview_large)
+    photon.preview_highres_data_length = len(photon.preview_highres_data)
+    photon.preview_highres_resolution_x = preview_large.width
+    photon.preview_highres_resolution_y = preview_large.height
+
+    preview_small = sl1.read_thumbnail(size="400x400")
+    photon.preview_lowres_data = encode_image_preview(preview_small)
+    photon.preview_lowres_data_length = len(photon.preview_lowres_data)
+    photon.preview_lowres_resolution_x = preview_small.width
+    photon.preview_lowres_resolution_y = preview_small.height
     photon.lifting_speed = int(args.liftspeed)
     photon.bottom_lift_speed = int(args.liftspeed)
     photon.version = 2;
