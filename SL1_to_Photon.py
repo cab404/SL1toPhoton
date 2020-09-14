@@ -53,33 +53,6 @@ class SL1Reader:
                 with open(os.path.join(dirpath, filename), 'bw') as f:
                     f.write(data)
 
-def encode_image_preview(input: Image):
-    output = bytes()
-    prev = -1
-    count = 0
-    c = 0
-    def flush():
-        nonlocal count, output, prev
-        if count > 1: prev |= 0x0020
-        output += struct.pack("H", prev)
-        if count > 1: output += struct.pack("BB", (count - 1) & 0xFF, (count - 1) >> 8)
-        count = 0
-
-    for y in range(input.height):
-        for x in range(input.width):
-            r, g, b, _ = input.getpixel((x, y))
-            c = (r >> 3 << 11) | (g >> 3 << 6) | (b >> 3)
-            if (prev == c and count < 4096) or prev == -1:
-                count += 1
-                prev = c
-            else:
-                flush()
-                count = 1
-                prev = c
-
-    flush()
-    return output
-
 
 if __name__ == '__main__':
     desc = '''Convert an SL1 file to a Photon file.'''
@@ -114,20 +87,6 @@ if __name__ == '__main__':
     photon.bottom_layers = int(sl1.config['numFade'])
     photon.bottom_layer_count = int(sl1.config['numFade'])
 
-
-    preview_large = sl1.read_thumbnail(size="800x480")
-    photon.preview_highres_data = encode_image_preview(preview_large)
-    photon.preview_highres_data_length = len(photon.preview_highres_data)
-    photon.preview_highres_resolution_x = preview_large.width
-    photon.preview_highres_resolution_y = preview_large.height
-
-    preview_small = sl1.read_thumbnail(size="400x400")
-    photon.preview_lowres_data = encode_image_preview(preview_small)
-    photon.preview_lowres_data_length = len(photon.preview_lowres_data)
-    photon.preview_lowres_resolution_x = preview_small.width
-    photon.preview_lowres_resolution_y = preview_small.height
-
-
     # Lift settings
     photon.retract_speed = int(args.retractspeed)
     photon.lifting_speed = int(args.liftspeed)
@@ -148,6 +107,8 @@ if __name__ == '__main__':
     photon.cost_dollars = 1
     photon.print_properties_length = 60
     photon.print_time = int(float(sl1.config['printTime']))
+    photon.set_preview_highres(sl1.read_thumbnail(size="800x480"))
+    photon.set_preview_lowres(sl1.read_thumbnail(size="400x400"))
 
     # Strange settings
     photon.bottom_lift_distance = 9060
