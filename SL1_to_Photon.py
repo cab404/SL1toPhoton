@@ -25,7 +25,7 @@ class SL1Reader:
         try:
             config = self.zf.read('config.ini')
         except KeyError:
-            print('ERROR: Did not find %s in zip file' % filename)
+            print('ERROR: Did not find config.ini in zip file. Is that really an SL1 file?')
         else:
             self.config = {}
             for line in config.decode().splitlines():
