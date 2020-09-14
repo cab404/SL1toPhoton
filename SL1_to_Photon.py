@@ -6,6 +6,7 @@ import tempfile
 import argparse
 import pyphotonfile
 import multiprocessing
+import io, struct
 from PIL import Image
 # from IPython import embed
 
@@ -43,6 +44,34 @@ class SL1Reader:
                 data = self.zf.read(filename)
                 with open(os.path.join(dirpath, filename), 'bw') as f:
                     f.write(data)
+
+def encode_image_preview(input: Image):
+    output = bytes()
+    prev = -1
+    count = 0
+    c = 0
+    def flush():
+        nonlocal count, output, prev
+        if count > 1: prev |= 0x0020
+        output += struct.pack("H", prev)
+        if count > 1: output += struct.pack("BB", (count - 1) & 0xFF, (count - 1) >> 8)
+        count = 0
+
+    for y in range(input.height):
+        for x in range(input.width):
+            r, g, b, _ = input.getpixel((x, y))
+            c = (r >> 3 << 11) | (g >> 3 << 6) | (b >> 3)
+            if (prev == c and count < 4096) or prev == -1:
+                count += 1
+                prev = c
+            else:
+                flush()
+                count = 1
+                prev = c
+
+    flush()
+    return output
+
 
 if __name__ == '__main__':
     desc = '''Convert an SL1 file to a Photon file.'''
