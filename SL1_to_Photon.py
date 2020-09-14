@@ -104,11 +104,16 @@ if __name__ == '__main__':
 
     sl1 = SL1Reader(args.sl1_file)
     photon = pyphotonfile.Photon()
-    photon.exposure_time = float(sl1.config['expTime'])
-    photon.exposure_time_bottom = float(sl1.config['expTimeFirst'])
+
+    # photon.version = 2;
+
+    # Slicing settings
+    photon.anti_aliasing_level = 0
+    photon.layer_levels = 1
     photon.layer_height = float(sl1.config['layerHeight'])
     photon.bottom_layers = int(sl1.config['numFade'])
     photon.bottom_layer_count = int(sl1.config['numFade'])
+
 
     preview_large = sl1.read_thumbnail(size="800x480")
     photon.preview_highres_data = encode_image_preview(preview_large)
@@ -121,23 +126,31 @@ if __name__ == '__main__':
     photon.preview_lowres_data_length = len(photon.preview_lowres_data)
     photon.preview_lowres_resolution_x = preview_small.width
     photon.preview_lowres_resolution_y = preview_small.height
+
+
+    # Lift settings
+    photon.retract_speed = int(args.retractspeed)
     photon.lifting_speed = int(args.liftspeed)
     photon.bottom_lift_speed = int(args.liftspeed)
-    photon.version = 2;
-    photon.print_properties_length = 60
-    photon.retract_speed = int(args.retractspeed)
-    photon.print_time = int(float(sl1.config['printTime']))
-    photon.anti_aliasing_level = 0
-    photon.layer_levels = 1
+    photon.lifting_distance = 5
+
+    # Curing settings
+    photon.exposure_time = float(sl1.config['expTime'])
+    photon.exposure_time_bottom = float(sl1.config['expTimeFirst'])
+    photon.bottom_light_off_delay = 0.0
+    photon.light_off_delay = 0.0
     photon.light_pwm = 255
     photon.light_pwm_bottom = 255
-    photon.bottom_lift_distance = 9060
-    photon.lifting_distance = 5
+
+    # Meta
     photon.volume_ml = float(sl1.config['usedMaterial'])
     photon.weight_g = float(sl1.config['usedMaterial'])
     photon.cost_dollars = 1
-    photon.bottom_light_off_delay = 0.0
-    photon.light_off_delay = 0.0
+    photon.print_properties_length = 60
+    photon.print_time = int(float(sl1.config['printTime']))
+
+    # Strange settings
+    photon.bottom_lift_distance = 9060
     photon.p1 = 0.0
     photon.p2 = 0.0
     photon.p3 = 0.0
