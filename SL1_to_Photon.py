@@ -78,21 +78,21 @@ if __name__ == '__main__':
     photon.print_properties_length = 60
     photon.retract_speed = int(args.retractspeed)
     photon.print_time = int(float(sl1.config['printTime']))
-    photon.photon.anti_aliasing_level = 0
-    photon.photon.layer_levels = 1
-    photon.photon.light_pwm = 255
-    photon.photon.light_pwm_bottom = 255
-    photon.photon.bottom_lift_distance = 9060
-    photon.photon.lifting_distance = 5
-    photon.photon.volume_ml = float(sl1.config['usedMaterial'])
-    photon.photon.weight_g = float(sl1.config['usedMaterial'])
-    photon.photon.cost_dollars = 1
-    photon.photon.bottom_light_off_delay = 0.0
-    photon.photon.light_off_delay = 0.0
-    photon.photon.p1 = 0.0
-    photon.photon.p2 = 0.0
-    photon.photon.p3 = 0.0
-    photon.photon.p4 = 0.0
+    photon.anti_aliasing_level = 0
+    photon.layer_levels = 1
+    photon.light_pwm = 255
+    photon.light_pwm_bottom = 255
+    photon.bottom_lift_distance = 9060
+    photon.lifting_distance = 5
+    photon.volume_ml = float(sl1.config['usedMaterial'])
+    photon.weight_g = float(sl1.config['usedMaterial'])
+    photon.cost_dollars = 1
+    photon.bottom_light_off_delay = 0.0
+    photon.light_off_delay = 0.0
+    photon.p1 = 0.0
+    photon.p2 = 0.0
+    photon.p3 = 0.0
+    photon.p4 = 0.0
 
     def log(*a, **b):
         if args.verbose:
